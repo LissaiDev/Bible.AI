@@ -27,24 +27,25 @@ export default ({ name, setName, control, setControl }) => {
           <Text style={styles.name}>Bible</Text>
           <Text style={styles.nameCompletion}>.AI</Text>
         </View>
-        <Text style={styles.greeting}>Hi, its great having you here!</Text>
+        <Text style={styles.greeting}>Olá, seja muito bem-vindo!</Text>
         <TextInput
           style={styles.input}
-          placeholder="First name"
+          placeholder="Primeiro nome"
           placeholderTextColor={"#7b7a83"}
           value={name.firstName}
           onChangeText={(value) => setName({ ...name, firstName: value })}
         />
         <TextInput
           style={styles.input}
-          placeholder="Last name"
+          placeholder="Último nome"
           placeholderTextColor={"#7b7a83"}
           value={name.lastName}
           onChangeText={(value) => setName({ ...name, lastName: value })}
+          onSubmitEditing={handlePress}
         />
         <TouchableOpacity style={styles.btn} onPress={handlePress}>
           <Text style={styles.btnText}>
-            {loading ? <ActivityIndicator /> : "Login"}
+            {loading ? <ActivityIndicator /> : "Entrar"}
           </Text>
         </TouchableOpacity>
       </SafeAreaView>

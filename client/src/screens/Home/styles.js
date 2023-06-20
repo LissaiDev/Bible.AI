@@ -39,5 +39,14 @@ export default StyleSheet.create({
         fontFamily: "Regular",
         marginTop: 20,
         marginBottom: 18
+    },
+    informationContainer: {
+        height: "90%",
+        width: "100%",
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+        paddingHorizontal: 10,
+        paddingTop: 30,
+        backgroundColor: "#fff"
     }
 })

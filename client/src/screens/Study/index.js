@@ -25,7 +25,7 @@ export default ({ data }) => {
       GiftedChat.append(previousMessages, newMessages)
     );
     try {
-      const response = await fetch("http://192.168.43.70:8080/chat", {
+      const response = await fetch("https://bibleai-kmwk.onrender.com/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

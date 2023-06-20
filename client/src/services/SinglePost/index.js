@@ -14,7 +14,7 @@ export default async (id, setData, setLoading) => {
       return null;
     }
   }
-  data = await fetch(`http://192.168.43.70:8080/studies/${id}`);
+  data = await fetch(`https://bibleai-kmwk.onrender.com/studies/${id}`);
   data = await data.json();
   setData(data);
   setLoading(false);

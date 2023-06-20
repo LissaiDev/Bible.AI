@@ -3,7 +3,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import countCategory from "../../utils/countCategory";
 export const getStudies = async (setData, setCount) => {
   try {
-    const response = await fetch("http://192.168.43.70:8080/studies");
+    const response = await fetch("https://bibleai-kmwk.onrender.com/studies");
     data = await response.json();
     await AsyncStorage.setItem("posts", JSON.stringify(data));
   } catch (e) {

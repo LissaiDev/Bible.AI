@@ -13,7 +13,7 @@ module.exports = (messages, res) => {
       messages: messages,
     },
   };
-  setTimeout(async () => {
+  const fetch = async()=>{
     try {
       const response = await axios.request(options);
       console.log("Fetching please wait");
@@ -22,5 +22,6 @@ module.exports = (messages, res) => {
     } catch (error) {
       console.error(error);
     }
-  }, 2000);
+  }
+  fetch();
 };

@@ -1,7 +1,7 @@
 import { View, Image, TouchableOpacity } from "react-native";
-export default ({image}) => {
+export default ({image, toggle}) => {
   return (
-    <TouchableOpacity
+    <TouchableOpacity onPress={toggle}
       style={{
         backgroundColor: "#282828",
         width: 50,
