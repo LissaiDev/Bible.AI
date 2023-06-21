@@ -6,7 +6,7 @@ export default () => {
     <SafeAreaView
       style={{
         flex: 1,
-        backgroundColor: "#1a1822",
+        backgroundColor: "#151515",
         justifyContent: "center",
         alignItems: "center",
       }}

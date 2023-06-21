@@ -1,45 +1,32 @@
-import {
-  Text,
-  View,
-  FlatList,
-  RefreshControl,
-  TextInput,
-  ScrollView,
-  TouchableOpacity,
-  ActivityIndicator,
-} from "react-native";
+import { Text, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import styles from "./styles";
 import HeaderIcon from "../../components/HeaderIcon";
 import { dotsThree } from "../../../assets/icons/";
 import Search from "../../components/Search";
-import Item from "../../components/Item";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useEffect } from "react";
 import { getStudies } from "../../services/Studies";
 import { useState } from "react";
 import Greeting from "../../components/Greeting";
 import Categories from "../../components/Categories";
-import { BottomSheet } from "react-native-btr";
-import Comment from "../../services/Comment";
-import Sucess from "../../components/Sucess";
+import TalkToMe from "../../components/TalkToMe";
+import Categorie from "../../components/Categorie";
+import Activity from "../../components/Activity";
 export default ({ name }) => {
-  const [refreshing, setRefreshing] = useState(false);
-  const [data, setData] = useState([]);
   const [count, setCount] = useState({});
   const [visible, setVisible] = useState(false);
   const [text, setText] = useState("");
   const [status, setStatus] = useState("");
+  const [loading, setLoading] = useState(true);
   const toggle = () => {
     setVisible(!visible);
     setText("");
     setStatus("");
   };
-
   const fetchData = async () => {
-    setRefreshing(true);
-    await getStudies(setData, setCount);
-    setRefreshing(false);
+    await getStudies(setCount);
+    setLoading(false);
   };
   useEffect(() => {
     fetchData();
@@ -54,92 +41,21 @@ export default ({ name }) => {
         </View>
         <Greeting name={name} />
         <Search />
-        <Categories count={count} />
-        <Text style={styles.category}>Todos estudos</Text>
-        <FlatList
-          showsVerticalScrollIndicator={false}
-          data={data}
-          refreshControl={
-            <RefreshControl
-              refreshing={refreshing}
-              onRefresh={fetchData}
-            />
-          }
-          keyExtractor={(item) => item._id}
-          renderItem={({ item }) => (
-            <Item
-              id={item._id}
-              title={item.title}
-              description={item.description}
-            />
-          )}
-        />
-        <BottomSheet
+        <Text style={styles.quoteText}>
+          "Portanto, se alguém está em Cristo, é nova criação. As coisas antigas
+          já passaram; eis que surgiram coisas novas!"
+        </Text>
+        <Text style={styles.quoteFont}>2 Coríntios 5:17</Text>
+        <Text style={styles.category}>Categorias</Text>
+        {loading ? <Activity /> : <Categories count={count} />}
+        <TalkToMe
           visible={visible}
-          onClose={toggle}
-          onBackButtonPress={toggle}
-          onBackdropPress={toggle}
-        >
-          <ScrollView style={styles.informationContainer}>
-            <Text
-              style={{
-                fontFamily: "Bold",
-                fontSize: 20,
-                textAlign: "center",
-                marginBottom: 20,
-              }}
-            >
-              Olá, seja muito bem vindo!
-            </Text>
-            <Text
-              style={{
-                textAlign: "center",
-                fontSize: 17,
-                fontFamily: "Ubuntu",
-                marginBottom: 15,
-              }}
-            >
-              Apresento o aplicativo de estudos bíblicos, desenvolvido para
-              ajudar cristãos em seus estudos da Bíblia. O aplicativo contém uma
-              ampla variedade de estudos bíblicos sobre diversos temas e
-              personagens, permitindo que os usuários aprofundem seu
-              conhecimento sobre a Palavra de Deus. Além disso, o aplicativo
-              conta com uma funcionalidade inovadora que permite aos usuários
-              tirar dúvidas em tempo real usando inteligência artificial. Com
-              isso, espero oferecer uma experiência de estudo bíblico mais
-              enriquecedora e interativa para todos os usuários.
-            </Text>
-            <TextInput
-              style={styles.talkToMe}
-              placeholder="Fale comigo! Deixe sua opinião e sugestões."
-              placeholderTextColor="#a1a1a1"
-              numberOfLines={5}
-              multiline
-              onChangeText={(text) => setText(text)}
-              value={text}
-            />
-            <TouchableOpacity
-              style={styles.btnTalkToMe}
-              onPress={() => {
-                text ? Comment(text, setStatus) : null;
-              }}
-            >
-              <Text style={styles.btnText}>
-                {status ? (
-                  status === "SENDING" ? (
-                    <ActivityIndicator size={"small"} color="#fff" />
-                  ) : status === "OK" ? (
-                    <Sucess />
-                  ) : (
-                    "ERRO"
-                  )
-                ) : (
-                  "ENVIAR"
-                )}
-              </Text>
-            </TouchableOpacity>
-          </ScrollView>
-        </BottomSheet>
+          toggle={toggle}
+          text={text}
+          setText={setText}
+          status={status}
+          setStatus={setStatus}
+        />
       </SafeAreaView>
     </>
   );

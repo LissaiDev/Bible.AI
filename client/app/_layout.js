@@ -9,12 +9,7 @@ const Layout = ()=>{
         LightItalic: require("../assets/fonts/lato/Lato-LightItalic.ttf"),
         Light: require("../assets/fonts/lato/Lato-Light.ttf"),
         Italic: require("../assets/fonts/lato/Lato-Italic.ttf"),
-        HairlineItalic: require("../assets/fonts/lato/Lato-HairlineItalic.ttf"),
-        Hairline: require("../assets/fonts/lato/Lato-Hairline.ttf"),
-        BoldItalic: require("../assets/fonts/lato/Lato-BoldItalic.ttf"),
         Bold: require("../assets/fonts/lato/Lato-Bold.ttf"),
-        BlackItalic: require("../assets/fonts/lato/Lato-BlackItalic.ttf"),
-        Black: require("../assets/fonts/lato/Lato-Black.ttf"),
         Ubuntu: require("../assets/fonts/ubuntu-cdnfonts/Ubuntu-R.ttf"),
     })
 

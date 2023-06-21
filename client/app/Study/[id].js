@@ -7,9 +7,14 @@ export default () => {
   const [loading, setLoading] = useState(true);
   const [data, setData]= useState([]);
   const { id } = useSearchParams();
+
+  const fetchData = async () => {
+    await SinglePost(id, setData);
+    setLoading(false);
+  }
   useEffect(() => {
-      SinglePost(id, setData, setLoading);
-  },[loading])
+      fetchData();
+  },[]);
   return (
     <>
       {loading ? (
