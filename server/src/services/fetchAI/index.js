@@ -13,15 +13,22 @@ module.exports = (messages, res) => {
       messages: messages,
     },
   };
-  const fetch = async()=>{
+  const fetch = async () => {
     try {
       const response = await axios.request(options);
       console.log("Fetching please wait");
       console.log(response.data.choices[0].message);
-      res.status(200).json({ response: {...response.data.choices[0].message, id:response.data.id }});
+      res
+        .status(200)
+        .json({
+          response: {
+            ...response.data.choices[0].message,
+            id: response.data.id,
+          },
+        });
     } catch (error) {
       console.error(error);
     }
-  }
+  };
   fetch();
 };

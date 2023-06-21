@@ -23,7 +23,9 @@ export default ({ name }) => {
   useEffect(() => {
     setRefreshing(true);
     getStudies(setData, setCount);
-    setRefreshing(false);
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 5000);
   }, [refreshing]);
 
   return (

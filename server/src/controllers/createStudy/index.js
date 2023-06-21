@@ -8,7 +8,8 @@ module.exports = async(req,res)=>{
             description: req.body.description,
             category: req.body.category,
             content: req.body.content,
-            conclusion: req.body.conclusion
+            conclusion: req.body.conclusion,
+            recommendation: req.body.recommendation,
         })
         await study.save();
         console.log(study);

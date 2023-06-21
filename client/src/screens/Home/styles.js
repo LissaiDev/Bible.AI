@@ -41,7 +41,7 @@ export default StyleSheet.create({
         marginBottom: 18
     },
     informationContainer: {
-        height: "90%",
+        height: "50%",
         width: "100%",
         borderTopLeftRadius: 20,
         borderTopRightRadius: 20,

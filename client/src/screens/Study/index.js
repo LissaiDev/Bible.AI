@@ -12,7 +12,7 @@ export default ({ data }) => {
   const [messages, setMessages] = useState([
     {
       _id: 1,
-      text: "Olá, vou responder suas dúvidas com base na Bíblia!",
+      text: "Olá, estou aqui para ajudar a responder suas dúvidas com base na Bíblia. Por favor, sinta-se à vontade para fazer suas perguntas e fornecer o contexto necessário, responderei citando partes da Bíblia para estudos e aprofundamento.",
       createdAt: new Date(),
       user: {
         _id: 2,
@@ -79,6 +79,8 @@ export default ({ data }) => {
       <Text style={styles.content}>{data.content}</Text>
       <Text style={styles.subtitle}>Conclusão</Text>
       <Text style={styles.content}>{data.conclusion}</Text>
+      <Text style={styles.subtitle}>Recomendações</Text>
+      <Text style={styles.content}>{data.recommendation}</Text>
       <TouchableOpacity style={styles.btn} onPress={toggle}>
         <Text style={styles.btnText}>Tirar dúvidas</Text>
       </TouchableOpacity>
