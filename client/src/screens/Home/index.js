@@ -1,4 +1,13 @@
-import { Text, View, FlatList, RefreshControl } from "react-native";
+import {
+  Text,
+  View,
+  FlatList,
+  RefreshControl,
+  TextInput,
+  ScrollView,
+  TouchableOpacity,
+  ActivityIndicator,
+} from "react-native";
 import { StatusBar } from "expo-status-bar";
 import styles from "./styles";
 import HeaderIcon from "../../components/HeaderIcon";
@@ -12,20 +21,24 @@ import { useState } from "react";
 import Greeting from "../../components/Greeting";
 import Categories from "../../components/Categories";
 import { BottomSheet } from "react-native-btr";
+import Comment from "../../services/Comment";
+import Sucess from "../../components/Sucess";
 export default ({ name }) => {
   const [refreshing, setRefreshing] = useState(true);
   const [data, setData] = useState([]);
   const [count, setCount] = useState({});
   const [visible, setVisible] = useState(false);
+  const [text, setText] = useState("");
+  const [status, setStatus] = useState("");
   const toggle = () => {
     setVisible(!visible);
+    setText("");
+    setStatus("");
   };
   useEffect(() => {
     setRefreshing(true);
     getStudies(setData, setCount);
-    setTimeout(() => {
-      setRefreshing(false);
-    }, 5000);
+    setRefreshing(false);
   }, [refreshing]);
 
   return (
@@ -63,7 +76,7 @@ export default ({ name }) => {
           onBackButtonPress={toggle}
           onBackdropPress={toggle}
         >
-          <View style={styles.informationContainer}>
+          <ScrollView style={styles.informationContainer}>
             <Text
               style={{
                 fontFamily: "Bold",
@@ -77,9 +90,9 @@ export default ({ name }) => {
             <Text
               style={{
                 textAlign: "center",
-                fontSize: 18,
+                fontSize: 17,
                 fontFamily: "Ubuntu",
-                marginBottom: 30,
+                marginBottom: 15,
               }}
             >
               Apresento o aplicativo de estudos bíblicos, desenvolvido para
@@ -92,27 +105,36 @@ export default ({ name }) => {
               isso, espero oferecer uma experiência de estudo bíblico mais
               enriquecedora e interativa para todos os usuários.
             </Text>
-            <Text
-              style={{
-                textAlign: "center",
-                fontSize: 18,
-                fontFamily: "Ubuntu",
-                marginBottom: 10,
+            <TextInput
+              style={styles.talkToMe}
+              placeholder="Fale comigo! Deixe sua opinião e sugestões."
+              placeholderTextColor="#a1a1a1"
+              numberOfLines={5}
+              multiline
+              onChangeText={(text) => setText(text)}
+              value={text}
+            />
+            <TouchableOpacity
+              style={styles.btnTalkToMe}
+              onPress={() => {
+                text ? Comment(text, setStatus) : null;
               }}
             >
-              Conheça meu Linkedin:
-            </Text>
-            <Text
-              style={{
-                textAlign: "center",
-                fontSize: 18,
-                fontFamily: "Ubuntu",
-                marginBottom: 30,
-              }}
-            >
-              René Armindo Lissai
-            </Text>
-          </View>
+              <Text style={styles.btnText}>
+                {status ? (
+                  status === "SENDING" ? (
+                    <ActivityIndicator size={"small"} color="#fff" />
+                  ) : status === "OK" ? (
+                    <Sucess />
+                  ) : (
+                    "ERRO"
+                  )
+                ) : (
+                  "ENVIAR"
+                )}
+              </Text>
+            </TouchableOpacity>
+          </ScrollView>
         </BottomSheet>
       </SafeAreaView>
     </>

@@ -41,12 +41,37 @@ export default StyleSheet.create({
         marginBottom: 18
     },
     informationContainer: {
-        height: "50%",
+        height: "90%",
         width: "100%",
         borderTopLeftRadius: 20,
         borderTopRightRadius: 20,
         paddingHorizontal: 10,
         paddingTop: 30,
         backgroundColor: "#fff"
-    }
+    },
+    talkToMe:{
+        fontSize: 17,
+        color: "#000",
+        fontFamily: "Regular",
+        marginTop: 20,
+        borderColor: "#a1a1a1",
+        borderWidth: 2,
+        padding: 10,
+        borderRadius: 10,
+        textAlignVertical:"top"
+    },
+    btnTalkToMe:{
+        backgroundColor: "#151515",
+        padding: 15,
+        borderRadius: 15,
+        marginTop: 15
+    },
+    btnText:{
+        textAlign: "center",
+        fontFamily: "Light",
+        fontSize: 17,
+        color: "#fff",
+        letterSpacing: 3,
+        padding: 5
+      }
 })

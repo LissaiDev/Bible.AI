@@ -25,7 +25,7 @@ export default ({ data }) => {
       GiftedChat.append(previousMessages, newMessages)
     );
     try {
-      const response = await fetch("https://bibleai-kmwk.onrender.com/chat", {
+      const response = await fetch("http://localhost:5000/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
