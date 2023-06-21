@@ -4,7 +4,7 @@ const getStudies = async (req, res) => {
   try {
     const studies = await Study.find();
     console.log(studies);
-    res.status(200).json(studies);
+    res.status(200).json(studies.reverse())
   } catch (err) {
     console.log(err.message);
     res.status(500).json(err.message);
