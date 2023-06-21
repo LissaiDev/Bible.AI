@@ -24,7 +24,7 @@ import { BottomSheet } from "react-native-btr";
 import Comment from "../../services/Comment";
 import Sucess from "../../components/Sucess";
 export default ({ name }) => {
-  const [refreshing, setRefreshing] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
   const [data, setData] = useState([]);
   const [count, setCount] = useState({});
   const [visible, setVisible] = useState(false);
@@ -35,11 +35,15 @@ export default ({ name }) => {
     setText("");
     setStatus("");
   };
-  useEffect(() => {
+
+  const fetchData = async () => {
     setRefreshing(true);
-    getStudies(setData, setCount);
+    await getStudies(setData, setCount);
     setRefreshing(false);
-  }, [refreshing]);
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -58,7 +62,7 @@ export default ({ name }) => {
           refreshControl={
             <RefreshControl
               refreshing={refreshing}
-              onRefresh={() => setRefreshing(true)}
+              onRefresh={fetchData}
             />
           }
           keyExtractor={(item) => item._id}
