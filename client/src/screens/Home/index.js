@@ -11,7 +11,6 @@ import { useState } from "react";
 import Greeting from "../../components/Greeting";
 import Categories from "../../components/Categories";
 import TalkToMe from "../../components/TalkToMe";
-import Categorie from "../../components/Categorie";
 import Activity from "../../components/Activity";
 export default ({ name }) => {
   const [count, setCount] = useState({});
@@ -41,11 +40,13 @@ export default ({ name }) => {
         </View>
         <Greeting name={name} />
         <Search />
+        <View>
         <Text style={styles.quoteText}>
           "Portanto, se alguém está em Cristo, é nova criação. As coisas antigas
           já passaram; eis que surgiram coisas novas!"
         </Text>
         <Text style={styles.quoteFont}>2 Coríntios 5:17</Text>
+        </View>
         <Text style={styles.category}>Categorias</Text>
         {loading ? <Activity /> : <Categories count={count} />}
         <TalkToMe

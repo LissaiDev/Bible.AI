@@ -63,7 +63,7 @@ export default ({ visible, toggle, text, setText, status, setStatus }) => {
           <Text style={styles.btnText}>
             {status ? (
               status === "SENDING" ? (
-                <ActivityIndicator size={"large"} color="#fff" />
+                <ActivityIndicator size={"small"} color="#fff" />
               ) : status === "OK" ? (
                 <Sucess />
               ) : (

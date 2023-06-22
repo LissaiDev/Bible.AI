@@ -5,6 +5,7 @@ SplashScreen.preventAutoHideAsync();
 
 const Layout = ()=>{
     const [fontsLoaded] = useFonts({
+        Black: require("../assets/fonts/lato/Lato-Black.ttf"),
         Regular: require("../assets/fonts/lato/Lato-Regular.ttf"),
         LightItalic: require("../assets/fonts/lato/Lato-LightItalic.ttf"),
         Light: require("../assets/fonts/lato/Lato-Light.ttf"),

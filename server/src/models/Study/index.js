@@ -32,6 +32,8 @@ const StudySchema = new Schema(
       type: String,
       required: true,
     },
+    //author
+    //status
   },
   {
     timestamps: true,

@@ -9,6 +9,7 @@ export default StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     marginBottom: 10,
+    marginTop: 5,
   },
   info: {
     fontSize: 16,
@@ -65,6 +66,9 @@ export default StyleSheet.create({
     padding: 15,
     borderRadius: 15,
     marginTop: 15,
+    height:70,
+    justifyContent: "center",
+    alignItems: "center",
   },
   btnText: {
     textAlign: "center",
@@ -81,10 +85,10 @@ export default StyleSheet.create({
     fontFamily: "Italic",
     textAlign: "center",
   },
-  quoteFont:{
+  quoteFont: {
     textAlign: "center",
     color: "white",
     fontSize: 16,
     fontFamily: "LightItalic",
-  }
+  },
 });
