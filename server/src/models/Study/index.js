@@ -33,7 +33,21 @@ const StudySchema = new Schema(
       required: true,
     },
     //author
+    // createdBy:{
+    //   type: Schema.Types.ObjectId,
+    //   ref: "User",
+    //   required: true,
+    //   trim:true
+    //   //default
+    // },
+    // status:{
+    //   enum: ["pending","available"],
+    //   required: true,
+    //   default: "pending",
+    //   type: String
+    // }
     //status
+    //cron job to delete articles with more than 2 months
   },
   {
     timestamps: true,

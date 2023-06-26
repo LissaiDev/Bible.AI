@@ -1,8 +1,7 @@
 const express = require("express");
-const studies = require("../../controllers/studies");
-const createStudy = require("../../controllers/createStudy");
+const { createStudy, getStudies, getStudy} = require("../../controllers/studies");
 const router = express.Router();
-router.get("/",studies.getStudies);
-router.get("/:id",studies.getStudy);
-router.post("/", createStudy);
+router.get("/",getStudies);
+router.get("/:id",getStudy);
+router.post("/",createStudy);
 module.exports = router
