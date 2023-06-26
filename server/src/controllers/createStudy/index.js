@@ -1,6 +1,5 @@
 const Study = require("../../models/Study");
 module.exports = async(req,res)=>{
-    console.log(req.body);
     try{
         const study = new Study({
             title: req.body.title,
@@ -12,7 +11,6 @@ module.exports = async(req,res)=>{
             recommendation: req.body.recommendation,
         })
         await study.save();
-        console.log(study);
         res.status(200).json(study);
     }catch(e){
         console.log(e.message);
