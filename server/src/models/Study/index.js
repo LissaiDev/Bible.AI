@@ -42,7 +42,7 @@ const StudySchema = new Schema(
     status:{
       enum: ["pending","available"],
       required: true,
-      default: "available",
+      default: "pending",
       type: String
     }
   },
