@@ -1,4 +1,4 @@
-import { Text, ScrollView, View } from "react-native";
+import { Text, ScrollView, View, ActivityIndicator } from "react-native";
 import styles from "./styles";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { BottomSheet } from "react-native-btr";
@@ -6,6 +6,7 @@ import { GiftedChat } from "react-native-gifted-chat";
 import { useState } from "react";
 export default ({ data }) => {
   const [enabled, setEnabled] = useState(false);
+  const [loading, setLoading] = useState(false);
   const toggle = () => {
     setEnabled(!enabled);
   };
@@ -25,6 +26,7 @@ export default ({ data }) => {
       GiftedChat.append(previousMessages, newMessages)
     );
     try {
+      setLoading(true);
       const response = await fetch("https://bibleai-kmwk.onrender.com/chat", {
         method: "POST",
         headers: {
@@ -49,6 +51,7 @@ export default ({ data }) => {
       setMessages((previousMessages) =>
         GiftedChat.append(previousMessages, toAppend)
       );
+      setLoading(false);
     } catch (e) {
       const toAppend = [
         {
@@ -96,6 +99,19 @@ export default ({ data }) => {
             onSend={handleSend}
             user={{ _id: 1 }}
           />
+          {loading ? (
+            <View
+              style={{
+                position: "relative",
+                flexDirection: "row",
+                justifyContent: "flex-start",
+                bottom: 90,
+                paddingStart: 20,
+              }}
+            >
+              <ActivityIndicator size="small" color="#b4b4b4" />
+            </View>
+          ) : null}
         </View>
       </BottomSheet>
     </ScrollView>

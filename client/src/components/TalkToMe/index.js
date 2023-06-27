@@ -36,13 +36,13 @@ export default ({ visible, toggle, text, setText, status, setStatus }) => {
             marginBottom: 15,
           }}
         >
-          Apresento o aplicativo de estudos bíblicos, desenvolvido para ajudar
+          Apresentamos o aplicativo de estudos bíblicos, desenvolvido para ajudar
           cristãos em seus estudos da Bíblia. O aplicativo contém uma ampla
           variedade de estudos bíblicos sobre diversos temas e personagens,
           permitindo que os usuários aprofundem seu conhecimento sobre a Palavra
           de Deus. Além disso, o aplicativo conta com uma funcionalidade
           inovadora que permite aos usuários tirar dúvidas em tempo real usando
-          inteligência artificial. Com isso, espero oferecer uma experiência de
+          inteligência artificial. Com isso, esperamos oferecer uma experiência de
           estudo bíblico mais enriquecedora e interativa para todos os usuários.
         </Text>
         <TextInput

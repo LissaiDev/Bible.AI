@@ -1,6 +1,6 @@
 import { useRouter } from "expo-router";
-import {  Text, TouchableOpacity } from "react-native";
-export default ({id, title, description}) => {
+import { Text, TouchableOpacity } from "react-native";
+export default ({ id, title }) => {
   const router = useRouter();
   return (
     <TouchableOpacity
@@ -8,7 +8,7 @@ export default ({id, title, description}) => {
         backgroundColor: "#1e1e1e",
         padding: 10,
         borderRadius: 10,
-        marginBottom: 17
+        marginBottom: 17,
       }}
       onPress={() => router.push(`/Study/${id}`)}
     >
@@ -17,14 +17,11 @@ export default ({id, title, description}) => {
           color: "white",
           fontFamily: "Bold",
           fontSize: 19,
-          textAlign: "center",
+          textAlign: "left",
           marginBottom: 10,
         }}
       >
         {title}
-      </Text>
-      <Text style={{ color: "white", fontFamily: "Regular", fontSize: 15}} numberOfLines={4}>
-        {description}
       </Text>
     </TouchableOpacity>
   );

@@ -4,7 +4,7 @@
     "web": {
       "bundler": "metro"
     },
-    "name": "Bible.AI",
+    "name": "Estudos Cristãos",
     "slug": "BibleAI",
     "splash": {
       "image": "./assets/images/splash.png",

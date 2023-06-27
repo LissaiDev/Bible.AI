@@ -36,6 +36,7 @@ export default StyleSheet.create({
   bottomSheet:{
      height: "80%", backgroundColor: "#fff",
      borderTopRightRadius: 20,
-     borderTopLeftRadius: 20
+     borderTopLeftRadius: 20,
+     position: "relative",
   }
 });

@@ -24,8 +24,8 @@ export default ({ name, setName, control, setControl }) => {
       <StatusBar style="auto" />
       <SafeAreaView style={styles.container}>
         <View style={styles.nameContainer}>
-          <Text style={styles.name}>Bible</Text>
-          <Text style={styles.nameCompletion}>.AI</Text>
+          <Text style={styles.name}>Estudos</Text>
+          <Text style={styles.nameCompletion}>.Cristãos</Text>
         </View>
         <Text style={styles.greeting}>Olá, seja muito bem-vindo!</Text>
         <TextInput

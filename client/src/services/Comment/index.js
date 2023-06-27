@@ -13,8 +13,6 @@ export default async (message, setStatus) => {
       body: JSON.stringify({name:name, message: message }),
     });
     if(response.ok){
-      const data = await response.json();
-      console.log(data);
       setStatus("OK");
       return true
     }else{

@@ -17,7 +17,6 @@ export default () => {
       const filteredData = filterData(filter, data);
       setData(filteredData);
       setFetching(false);
-      console.log(filteredData);
     } catch (e) {
       console.log(e.message);
     }
@@ -46,7 +45,6 @@ export default () => {
                     key={item._id}
                     id={item._id}
                     title={item.title}
-                    description={item.description}
                   />
                 );
               })
