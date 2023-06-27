@@ -4,7 +4,7 @@ export default async (message, setStatus) => {
   setStatus("SENDING");
   try {
     const name = await AsyncStorage.getItem("name");
-    const response = await fetch("https://bibleai-kmwk.onrender.com/comments", {
+    const response = await fetch("http://localhost:8080/comments", {
       method: "POST",
       headers: {
         Accept: "application/json",

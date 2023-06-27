@@ -13,7 +13,7 @@ export default async (id, setData) => {
         return true;
       }
     }
-    data = await fetch(`https://bibleai-kmwk.onrender.com/studies/${id}`);
+    data = await fetch(`https://localhost:8080/studies/${id}`);
     data = await data.json();
     setData(data);
     return true;

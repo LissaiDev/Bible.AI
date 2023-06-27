@@ -27,7 +27,7 @@ export default ({ data }) => {
     );
     try {
       setLoading(true);
-      const response = await fetch("https://bibleai-kmwk.onrender.com/chat", {
+      const response = await fetch("http://localhost:8080/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
