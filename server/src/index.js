@@ -6,6 +6,8 @@ const cors = require("cors");
 const chat = require("./routes/chat");
 const comments = require("./routes/comments")
 const axios = require("axios");
+const cookieParser = require("cookie-parser");
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({ origin: "*" }));

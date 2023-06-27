@@ -15,8 +15,7 @@ module.exports = (req, res) => {
         content: message.text,
       };
     });
-    const reversed = messages.reverse();
-    fetchAI(reversed, res);
+    fetchAI(messages.reverse(), res);
   } else {
     res.status(400).json({ message: "No message received" });
   }
