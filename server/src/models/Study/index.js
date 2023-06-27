@@ -32,8 +32,19 @@ const StudySchema = new Schema(
       type: String,
       required: true,
     },
-    //author
-    //status
+    createdBy:{
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+      trim:true,
+      default:"64975e61970fb1afd77607a8",
+    },
+    status:{
+      enum: ["pending","available"],
+      required: true,
+      default: "pending",
+      type: String
+    }
   },
   {
     timestamps: true,

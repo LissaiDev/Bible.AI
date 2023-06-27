@@ -1,8 +1,10 @@
 const express = require("express");
-const studies = require("../../controllers/studies");
-const createStudy = require("../../controllers/createStudy");
+const { createStudy, getStudies, getStudy, updateStatus, deleteStudy, dev} = require("../../controllers/studies");
+const studiesValidation = require("../../utils/studiesValidation");
 const router = express.Router();
-router.get("/",studies.getStudies);
-router.get("/:id",studies.getStudy);
-router.post("/", createStudy);
+router.get("/",getStudies);
+router.get("/:id",getStudy);
+router.post("/",studiesValidation,createStudy);
+router.put("/updateStatus/:id",updateStatus);
+router.delete("/delete/:id",deleteStudy);
 module.exports = router
