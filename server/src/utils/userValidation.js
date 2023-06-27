@@ -41,6 +41,6 @@ module.exports = {
           return Promise.reject("Usuário não existe");
         }
         return true;
-      }),
+      })
   ],
 };
