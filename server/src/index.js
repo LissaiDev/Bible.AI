@@ -4,13 +4,13 @@ const databaseConnection = require("./config/database");
 const app = express();
 const cors = require("cors");
 const chat = require("./routes/chat");
-const comments = require("./routes/comments")
+const comments = require("./routes/comments");
 const axios = require("axios");
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors({ origin: "*" }));
+app.use(cors({ origin: "*", credentials: true }));
 const studies = require("./routes/studies");
 const user = require("./routes/user");
 //Connecting do database
