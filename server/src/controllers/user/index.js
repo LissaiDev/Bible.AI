@@ -55,6 +55,7 @@ const logUser = async (req, res) => {
       .json({ message: "Erro de validação", data: errors.array() });
   }
   try {
+    console.log(name, password);
     const user = await User.findOne({ name }).select("-password");
     if (user) {
       if (compare(password, user.password)) {
