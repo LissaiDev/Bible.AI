@@ -27,7 +27,7 @@ const createUser = async (req, res) => {
         return res
           .status(200)
           .json({ message: "Usuário criado com sucesso", data: newUser });
-      }else{
+      } else {
         return res.status(401).json({
           message: "Sem autorização",
           data: { error: "Sem autorização" },
@@ -55,7 +55,7 @@ const logUser = async (req, res) => {
       .json({ message: "Erro de validação", data: errors.array() });
   }
   try {
-    const user = await User.findOne({ name });
+    const user = await User.findOne({ name }).select("-password");
     if (user) {
       if (compare(password, user.password)) {
         const token = jwt.sign(
@@ -65,7 +65,10 @@ const logUser = async (req, res) => {
         console.log(token);
         return res
           .status(200)
-          .cookie("token", token)
+          .cookie("token", token, {
+            sameSite: "none",
+            secure: true,
+          })
           .json({ message: "Usuário logado com sucesso", data: user });
       } else {
         return res.status(401).json({
@@ -73,7 +76,7 @@ const logUser = async (req, res) => {
           data: { error: "Sem autorização" },
         });
       }
-    }else{
+    } else {
       return res.status(401).json({
         message: "Sem autorização",
         data: { error: "Sem autorização" },
@@ -86,17 +89,20 @@ const logUser = async (req, res) => {
   }
 };
 
-const logOut = (req, res)=>{
-  try{
-    if(isLogged(req)){
-    return res.clearCookie("token").status(200).json({message:"Usuário deslogado"})
-    }else{
-      return res.status(401).json({message:"Usuário não logado"})
+const logOut = (req, res) => {
+  try {
+    if (isLogged(req)) {
+      return res
+        .clearCookie("token")
+        .status(200)
+        .json({ message: "Usuário deslogado" });
+    } else {
+      return res.status(401).json({ message: "Usuário não logado" });
     }
-  }catch(e){
+  } catch (e) {
     console.log(e.message);
-    res.status(500).json({message: "erro", data: { error: e.message }});
+    res.status(500).json({ message: "erro", data: { error: e.message } });
   }
-}
+};
 
 module.exports = { createUser, logUser, logOut };

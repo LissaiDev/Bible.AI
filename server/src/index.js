@@ -10,7 +10,7 @@ const cookieParser = require("cookie-parser");
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors({ origin: "*" }));
+app.use(cors({ origin: process.env.allowedOrigin, credentials: true }));
 const studies = require("./routes/studies");
 const user = require("./routes/user");
 //Connecting do database

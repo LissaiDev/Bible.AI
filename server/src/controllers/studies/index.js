@@ -30,7 +30,7 @@ const createStudy = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res
-      .status(401)
+      .status(400)
       .json({ message: "Erro de validação", data: errors.array() });
   }
   const {
@@ -43,6 +43,7 @@ const createStudy = async (req, res) => {
     recommendation,
   } = req.body;
   const user = isLogged(req);
+  console.log(user);
   if (user) {
     try {
       const study = new Study({
@@ -61,7 +62,7 @@ const createStudy = async (req, res) => {
       });
       await study.save();
       console.log(study);
-      res.status(200).json(study);
+      res.status(200).json({message: "Estudo criado com sucesso", study});
     } catch (e) {
       console.log(e.message);
       res.status(500).json(e.message);
