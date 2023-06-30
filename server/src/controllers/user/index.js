@@ -56,7 +56,7 @@ const logUser = async (req, res) => {
   }
   try {
     console.log(name, password);
-    const user = await User.findOne({ name }).select("-password");
+    const user = await User.findOne({ name });
     if (user) {
       if (compare(password, user.password)) {
         const token = jwt.sign(
@@ -70,7 +70,7 @@ const logUser = async (req, res) => {
             sameSite: "none",
             secure: true,
           })
-          .json({ message: "Usuário logado com sucesso", data: user });
+          .json({ message: "Usuário logado com sucesso", data: {name: user.name, id: user._id, previlegies: user.previlegies} });
       } else {
         return res.status(401).json({
           message: "Usuário ou senha incorretos",
